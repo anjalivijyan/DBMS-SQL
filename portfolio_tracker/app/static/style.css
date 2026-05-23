@@ -1,0 +1,9 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 2em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}

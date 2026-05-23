@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>User Added</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>User Added Successfully!</h1>
+    <p>New user details:</p>
+    <ul>
+        <li>Name: {{ name }}</li>
+    </ul>
+    <a href="{{ url_for('index') }}">Go back to home page</a>
+</body>
+</html>

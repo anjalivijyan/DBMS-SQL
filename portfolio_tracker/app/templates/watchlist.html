@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Watchlist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ name }}'s Watchlist</h1>
+    
+    <h2>Add to Watchlist</h2>
+    <form method="POST">
+        <select name="stock_id">
+            {% for stock in all_stocks %}
+            <option value="{{ stock[0] }}">{{ stock[1] }} ({{ stock[2] }})</option>
+            {% endfor %}
+        </select>
+        <input type="hidden" name="action" value="add">
+        <button type="submit">Add</button>
+    </form>
+    
+    <h2>Your Watchlist</h2>
+    {% if watchlist %}
+    <table border="1">
+        <tr>
+            <th>Stock</th>
+            <th>Ticker</th>
+            <th>Latest Price</th>
+            <th>Remove</th>
+        </tr>
+        {% for stock in watchlist %}
+        <tr>
+            <td>{{ stock[0] }}</td>
+            <td>{{ stock[1] }}</td>
+            <td>{{ stock[3] }}</td>
+            <td>
+                <form method="POST">
+                    <input type="hidden" name="stock_id" value="{{ stock[2] }}">
+                    <input type="hidden" name="action" value="remove">
+                    <button type="submit">Remove</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>Your watchlist is empty.</p>
+    {% endif %}
+    
+    <br>
+    <a href="{{ url_for('user_dashboard', name=name) }}"><button>Back</button></a>
+</body>
+</html>

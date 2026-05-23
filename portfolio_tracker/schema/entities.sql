@@ -1,0 +1,49 @@
+-- USERINFO email unique table has been altered. 
+CREATE TABLE USERINFO(user_id INT AUTO_INCREMENT PRIMARY KEY, 
+user_name VARCHAR(200) NOT NULL, 
+email VARCHAR(250) NOT NULL, 
+ password VARCHAR(100) NOT NULL,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL); 
+
+CREATE TABLE STOCKS(stock_id INT AUTO_INCREMENT PRIMARY KEY, 
+stock_name VARCHAR(100) NOT NULL,
+ticker VARCHAR(50) NOT NULL UNIQUE,
+stock_type VARCHAR(50) NOT NULL,
+country VARCHAR(50)); 
+
+CREATE TABLE HOLDINGS(holdings_id INT AUTO_INCREMENT PRIMARY KEY,
+quantity INT NOT NULL, 
+avg_buy_price DECIMAL(15,4) NOT NULL, 
+user_id INT NOT NULL,
+FOREIGN KEY(user_id) references USERINFO(user_id),
+stock_id INT NOT NULL,
+FOREIGN KEY(stock_id) references STOCKS(stock_id)
+); 
+
+
+-- TABLE ALTERED PRICE COLUMN ADDED  
+CREATE TABLE TRANSACTIONS(transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT NOT NULL,
+FOREIGN KEY(user_id) references USERINFO(user_id),
+stock_id INT NOT NULL,
+FOREIGN KEY(stock_id) references STOCKS(stock_id),
+quantity INT NOT NULL,
+transaction_type VARCHAR(10) CHECK (transaction_type IN ('Buy', 'Sell')) NOT NULL,
+transaction_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL);
+
+CREATE TABLE WATCHLIST(watchlist_id INT AUTO_INCREMENT PRIMARY KEY, 
+user_id INT NOT NULL,
+FOREIGN KEY (user_id) REFERENCES USERINFO(user_id),
+stock_id INT NOT NULL,
+FOREIGN KEY(stock_id) REFERENCES STOCKS(stock_id),
+added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL); 
+-- Table altered volume bigint 
+CREATE TABLE PRICES(price_id INT AUTO_INCREMENT PRIMARY KEY, 
+stock_id INT NOT NULL,
+FOREIGN KEY(stock_id) REFERENCES STOCKS(stock_id),
+date_ DATE NOT NULL,
+open_ DECIMAL(15,4)  NOT NULL,
+high_ DECIMAL(15,4) NOT NULL,
+low_ DECIMAL (15,4)NOT NULL,
+close_ DECIMAL (15,4) NOT NULL,
+volume INT NOT NULL);

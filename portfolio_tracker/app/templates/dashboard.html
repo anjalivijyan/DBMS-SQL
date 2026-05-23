@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Market Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Market Dashboard</h1>
+    
+    <table border="1">
+        <tr>
+            <th>Index</th>
+            <th>Ticker</th>
+            <th>Latest Price</th>
+            <th>Date</th>
+            <th>Price Rank</th>
+            <th>7 Day Moving Avg</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock[0] }}</td>
+            <td>{{ stock[1] }}</td>
+            <td>{{ stock[2] }}</td>
+            <td>{{ stock[3] }}</td>
+            <td>{{ stock[4] }}</td>
+            <td>{{ stock[5] | round(2) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <br>
+    <a href="{{ url_for('index') }}"><button>Home</button></a>
+</body>
+</html>

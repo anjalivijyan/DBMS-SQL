@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>{{ user.user_name }}'s Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome, {{ user.user_name }}!</h1>
+    <p>Email: {{ user.email }}</p>
+    
+    <a href="{{ url_for('buy_stock', name=user.user_name) }}"><button>Buy Stock</button></a>
+    <a href="{{ url_for('sell_stock', name=user.user_name) }}"><button>Sell Stock</button></a>
+    <a href="{{ url_for('watchlist', name=user.user_name) }}"><button>Watchlist</button></a>
+    <a href="{{ url_for('transactions', name=user.user_name) }}"><button>Transactions</button></a>
+    <a href="{{ url_for('dashboard') }}"><button>Market Dashboard</button></a>
+    <a href="{{ url_for('index') }}"><button>Home</button></a>
+    
+    
+    <h2>Your Holdings</h2>
+    {% if holdings %}
+    <table border="1">
+        <tr>
+            <th>Stock</th>
+            <th>Ticker</th>
+            <th>Quantity</th>
+            <th>Avg Buy Price</th>
+        </tr>
+        {% for holding in holdings %}
+        <tr>
+            <td>{{ holding[0] }}</td>
+            <td>{{ holding[1] }}</td>
+            <td>{{ holding[2] }}</td>
+            <td>{{ holding[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>You have no holdings yet.</p>
+    {% endif %}
+</body>
+</html>
