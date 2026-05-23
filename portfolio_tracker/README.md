@@ -1,20 +1,13 @@
 # **DBMS - SQL : PORTFOLIO TRACKER**
 
-The Portfolio Tracker is an SQL-based financial web application designed to help users manage their stock investments more efficiently. The platform enables users to buy and sell global market indices, track their holdings, manage a watchlist, and gain insights into market performance through analytics.
-
-The platform uses MySQL as the core database system, storing structured data such as user profiles, transaction logs, holdings, watchlists, and historical price data for 8 global indices. The backend is developed using Python (Flask), which processes user requests and handles all the logic, such as handling routes, processing input, and applying trading procedures. The frontend is built with HTML and CSS, providing a user interface for signing up, buying and selling stocks, viewing holdings, and monitoring the market dashboard.
-
-Got it — here's your full README in her exact style:
-markdown# **PORTFOLIO-TRACKER**
-
-The Portfolio Tracker is an SQL-based financial web application designed to help users manage their stock investments more efficiently. The platform enables users to buy and sell global market indices, track their holdings, manage a watchlist, and gain insights into market performance through analytics.
+The Portfolio Tracker is an SQL based financial web application designed to help users manage their stock investments more efficiently. The platform enables users to buy and sell global market indices, track their holdings, manage a watchlist, and gain insights into market performance through analytics.
 
 The platform uses MySQL as the core database system, storing structured data such as user profiles, transaction logs, holdings, watchlists, and historical price data for 8 global indices. The backend is developed using Python (Flask), which processes user requests and handles all the logic, such as handling routes, processing input, and applying trading procedures. The frontend is built with HTML and CSS, providing a user interface for signing up, buying and selling stocks, viewing holdings, and monitoring the market dashboard.
 
 # **Set up instructions for the website :**
 This guide will help you set up and run the Portfolio Tracker using Flask and MySQL.
 
-1. Clone or Download the Project Download the project folder containing the following files: • app.py (Flask application code) • connection.py (MySQL connection code) • dbms.env (environment variables — you'll create this) • templates/ (folder for HTML templates) • static/ (folder for CSS)
+1. Clone or Download the Project Download the project folder containing the following files: • app.py (Flask application code) • connection.py (MySQL connection code) • dbms.env (environment variables) • templates/ (folder for HTML templates) • static/ (folder for CSS)
 
 2. Set Up the MySQL Database in MySQL Workbench 2.1 Create a New Database
 
